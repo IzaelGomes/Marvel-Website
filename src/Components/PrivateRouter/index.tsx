@@ -1,6 +1,6 @@
 import React, { Children, useContext, useEffect } from "react"
 import { useNavigate, Navigate } from "react-router-dom"
-import AuthContext, { useAuth } from "../../Contexts/AuthContext"
+import AuthContext, { useAuth } from "../../Contexts/ContextProvider"
 import Login from "../../pages/Login"
 
 

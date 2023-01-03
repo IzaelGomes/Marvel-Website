@@ -4,17 +4,31 @@ import styled from "styled-components";
 export const Aside = styled.aside`
 
     #header-menu{
-        background: ${props => props.theme.colors.background};
+        background: ${props => props.theme.colors.secundary};
         height:2.7rem;
         width:100%;
         position:fixed;
         display:flex;
         justify-content: space-between;
         z-index:2;
+        padding-top:4px;
+
+        .menu_right{
+            display:flex;
+            align-items:center;
+            gap:2rem;
+        }
+
+        .dark_mode_ghipy img{
+            padding-top:0.2rem;
+            max-width:35px;
+            cursor:pointer;
+        }
+
     }
 
     #container{
-        background-color: ${props => props.theme.colors.background};
+        background-color: ${props => props.theme.colors.secundary};
         height: 100vh;
         max-width: 370px;
         padding: 10px;

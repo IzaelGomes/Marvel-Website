@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Routers from "./Routes/Routers"
 import RingLoader from "react-spinners/RingLoader";
-import { AuthProvider, AuthContext } from "./Contexts/AuthContext"
+import { AuthProvider, AuthContext } from "./Contexts/ContextProvider"
 
 import { GlobalStyle } from "./styles/global"
 import { ThemeProvider } from 'styled-components';
@@ -10,19 +10,15 @@ import dark from './styles/themes/dark'
 
 
 
-
-
-
 function App() {
 
+  const {theme} = useContext(AuthContext)
 
   return (
     <div className="App">
-      <ThemeProvider theme={dark}>
+      <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <AuthProvider>
-              <Routers />
-        </AuthProvider>
+          <Routers />
       </ThemeProvider>
     </div>
   )

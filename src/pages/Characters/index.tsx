@@ -19,6 +19,8 @@ interface CharactersTypes {
   description: string;
 }
 
+
+
 const Characters = () => {
   const [characters, setCharacters] = useState<[]>([]);
   const [scrollButton, setScrollButton] = useState<boolean>(false);
@@ -31,7 +33,7 @@ const Characters = () => {
         `http://gateway.marvel.com/v1/public/characters?ts=${time}&apikey=${apiKey}&hash=${md5}`
       );
       setCharacters(response.data.data.results);
-      console.log(response.data.data.results);
+     
     } catch (err) {
       alert(err);
     }

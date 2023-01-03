@@ -67,18 +67,11 @@ export const ContainerCard = styled.div`
         height:100%;
     }
     
-    .modal-content{
-        height:100%;
-        display:flex;
+  
+
+    .modal-img{
+        width:100px;
     }
 
-    .modal-img img{
-        max-width:200px;
-        height:200px;
-    }
-
-    .description p{
-        width:10px;
-    }
 
  `

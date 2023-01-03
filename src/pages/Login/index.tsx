@@ -8,7 +8,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import {Wrapper} from './style'
 import fundo_spider from '../../assets/spider-man.jpg'
 import logo from '../../assets/logo-marvel.jpg'
-import AuthContext from '../../Contexts/AuthContext'
+import AuthContext from '../../Contexts/ContextProvider'
 
 
 const Login = () => {

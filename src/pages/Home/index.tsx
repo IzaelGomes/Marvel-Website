@@ -1,16 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useAuth, AuthContext } from "../../Contexts/AuthContext";
+import { useAuth, AuthContext } from "../../Contexts/ContextProvider";
 
 import SideMenu from "../../Components/layout/Menu/SideMenu";
 
 import { HomeContainer } from "./style";
 
-interface CardProps {
-  name: string;
-  description: string;
-  thumbnail: string;
-  key: number;
-}
+
 
 const Home = () => {
   return (

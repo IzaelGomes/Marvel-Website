@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { ContainerCard } from "./style";
 import { AiFillHeart, AiOutlineHeart, AiFillInfoCircle } from "react-icons/ai";
 import Modal from "react-modal";
 import Swal from "sweetalert2";
+import AuthContext from "../../../Contexts/ContextProvider";
 
 interface CardProps {
   name: string;
@@ -13,14 +14,16 @@ interface CardProps {
   id: number;
 }
 
+type characterObject = CardProps;
+
 const customStyles = {
   content: {
+    display:"flex",
     width: "70vw",
     height: "70vh",
     top: "50%",
     left: "50%",
     right: "auto",
-    display: "flex",
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
@@ -35,8 +38,10 @@ const Card = ({
   id,
   characterObject,
 }: CardProps) => {
-  const [ishas, setIsHas] = useState<boolean>(false);
+  
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+
 
   function save(saveCharacter: CardProps) {
     const charactersSaved: any = localStorage.getItem("marvel");
@@ -67,7 +72,8 @@ const Card = ({
   function isSaved() {
     const charactersSaved: any = localStorage.getItem("marvel");
     const elements = JSON.parse(charactersSaved) || [];
-    setIsHas(elements.some((chara: any) => chara.id == id));
+
+    setIsFavorite(elements.some((chara: any) => chara.id == id));
   }
 
   function closeModal() {
@@ -90,7 +96,7 @@ const Card = ({
         <img src={`${thumbnail}.${extension}`} alt={name} />
         <div className="layer">
           <div className="layer-content">
-            {ishas ? (
+            {isFavorite ? (
               <AiFillHeart
                 onClick={() => save(characterObject)}
                 style={{ height: 100, width: 60, cursor: "pointer" }}
@@ -116,16 +122,16 @@ const Card = ({
         contentLabel="Example Modal"
         ariaHideApp={false}
       >
-        <div className="modal">
-          <div className="modal-content">
+       
+          
             <div className="modal-img">
               <img src={`${thumbnail}.${extension}`} alt={name} />
             </div>
             <div className="description">
               <p>{description}</p>
             </div>
-          </div>
-        </div>
+         
+       
       </Modal>
     </ContainerCard>
   );

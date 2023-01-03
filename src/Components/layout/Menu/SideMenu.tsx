@@ -2,10 +2,12 @@ import React, { ReactNode, useContext, useState } from "react";
 import { Aside, MenuOptions } from "./style";
 import { FiAlignJustify } from "react-icons/fi";
 import logo_user from "../../../assets/user-logo.png";
-import AuthContext, { useAuth } from "../../../Contexts/AuthContext";
+import AuthContext, { useAuth } from "../../../Contexts/ContextProvider";
 import { BsBoxArrowInRight } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../../firebase";
+import darkGiphy from "../../../assets/dark_ghipy.webp";
+import lightGiphy from "../../../assets/light_ghipy.webp";
 
 const SideMenu = () => {
   const { user } = useAuth();
@@ -13,6 +15,7 @@ const SideMenu = () => {
   const [menu, setMenu] = useState<boolean>(true);
   const [isLogOut, setIsLogOut] = useState<boolean>(false);
   const navigate = useNavigate();
+  const { switchTheme, theme } = useContext(AuthContext);
 
   function logOut() {
     setIsLogOut(true);
@@ -50,16 +53,33 @@ const SideMenu = () => {
             />
           </span>
         )}
-        <div id="menu-icon-exit" onClick={logOut}>
-          <BsBoxArrowInRight
-            style={{
-              height: 40,
-              width: 40,
-              marginRight: 50,
-              cursor: "pointer",
-              color: "#fff",
-            }}
-          />
+        <div className="menu_right">
+          <div className="dark_mode_ghipy">
+            {theme.title == "light" ? (
+              <img
+                className="dark_button"
+                src={lightGiphy}
+                onClick={() => switchTheme("dark")}
+              />
+            ) : (
+              <img
+                className="light_button"
+                src={darkGiphy}
+                onClick={() => switchTheme("light")}
+              />
+            )}
+          </div>
+          <div id="menu-icon-exit" onClick={logOut}>
+            <BsBoxArrowInRight
+              style={{
+                height: 40,
+                width: 40,
+                marginRight: 50,
+                cursor: "pointer",
+                color: "#fff",
+              }}
+            />
+          </div>
         </div>
       </div>
 
@@ -76,10 +96,10 @@ const SideMenu = () => {
           <MenuOptions>
             <ul>
               <li>
-                <Link to={"/characters"}> Personagens </Link>
+                <Link to={"/home"}> Home </Link>
               </li>
               <li>
-                <Link to={""}>Séries </Link>
+                <Link to={"/characters"}>Personagens </Link>
               </li>
               <li>
                 <Link to={""}>Filmes</Link>
