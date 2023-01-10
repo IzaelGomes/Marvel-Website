@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from "react";
 import { ContainerCard } from "./style";
 import { AiFillHeart, AiOutlineHeart, AiFillInfoCircle } from "react-icons/ai";
+import * as Dialog from "@radix-ui/react-dialog";
 import Modal from "react-modal";
 import Swal from "sweetalert2";
-import AuthContext from "../../../Contexts/ContextProvider";
 
 interface CardProps {
   name: string;
@@ -14,21 +14,6 @@ interface CardProps {
   id: number;
 }
 
-type characterObject = CardProps;
-
-const customStyles = {
-  content: {
-    display:"flex",
-    width: "70vw",
-    height: "70vh",
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
 
 const Card = ({
   description,
@@ -38,17 +23,21 @@ const Card = ({
   id,
   characterObject,
 }: CardProps) => {
-  
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
 
+
+  const fav = {
+    saved : "saved",
+    notsaved:"notsaved"
+  }
 
   function save(saveCharacter: CardProps) {
     const charactersSaved: any = localStorage.getItem("marvel");
     const elements = JSON.parse(charactersSaved) || [];
 
     if (elements.some((chara: any) => chara.id == id)) {
-      return  Swal.fire({
+      return Swal.fire({
         title: "Personagem já salvo !",
         icon: "info",
         showConfirmButton: false,
@@ -67,28 +56,23 @@ const Card = ({
       timer: 1500,
       iconColor: "#842524",
     });
+
+    checkIfIsSaved()
   }
 
-  function isSaved() {
+  function checkIfIsSaved() {
     const charactersSaved: any = localStorage.getItem("marvel");
     const elements = JSON.parse(charactersSaved) || [];
-
     setIsFavorite(elements.some((chara: any) => chara.id == id));
   }
 
-  function closeModal() {
-    setIsOpen(false);
-  }
+  useEffect(() =>{
+    checkIfIsSaved()
+  },[])
 
-  function openModal() {
-    setIsOpen(true);
-    console.log(description);
-  }
 
-  useEffect(() => {
-    isSaved();
-  }, []);
 
+ 
   return (
     <ContainerCard>
       <h2>{name}</h2>
@@ -108,31 +92,11 @@ const Card = ({
               />
             )}
             <AiFillInfoCircle
-              onClick={openModal}
               style={{ height: 100, width: 60, cursor: "pointer" }}
             />
           </div>
         </div>
       </div>
-
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-        ariaHideApp={false}
-      >
-       
-          
-            <div className="modal-img">
-              <img src={`${thumbnail}.${extension}`} alt={name} />
-            </div>
-            <div className="description">
-              <p>{description}</p>
-            </div>
-         
-       
-      </Modal>
     </ContainerCard>
   );
 };

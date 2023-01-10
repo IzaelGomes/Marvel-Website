@@ -14,16 +14,19 @@ interface CharactersTypes {
   name: string;
   key: number;
   id: number;
-  thumbnail: string;
+  thumbnail: thumbnail;
   index: number;
   description: string;
 }
 
-
+interface thumbnail {
+  path: string;
+  extension: string;
+}
 
 const Characters = () => {
   const [characters, setCharacters] = useState<[]>([]);
-  const [scrollButton, setScrollButton] = useState<boolean>(false);
+ 
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -33,7 +36,6 @@ const Characters = () => {
         `http://gateway.marvel.com/v1/public/characters?ts=${time}&apikey=${apiKey}&hash=${md5}`
       );
       setCharacters(response.data.data.results);
-     
     } catch (err) {
       alert(err);
     }

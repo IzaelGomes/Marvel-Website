@@ -38,6 +38,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const savedTheme:any | null = localStorage.getItem("theme") 
   const [theme, setTheme] = useState(JSON.parse(savedTheme) || light )
 
+  
   function switchTheme(themeTitle: string){
     if(themeTitle == "light"){
       setTheme(light)

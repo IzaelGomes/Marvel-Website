@@ -67,10 +67,13 @@ export const ContainerCard = styled.div`
         height:100%;
     }
     
-  
-
-    .modal-img{
-        width:100px;
+    .modal-content{
+        z-index:2;
+        position:fixed;
+        top: 0; 
+        right: 50%;
+      
+        
     }
 
 
