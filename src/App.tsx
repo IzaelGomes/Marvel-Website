@@ -11,14 +11,13 @@ import dark from './styles/themes/dark'
 
 
 function App() {
-
   const {theme} = useContext(AuthContext)
 
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-          <Routers />
+        <Routers />
       </ThemeProvider>
     </div>
   )
