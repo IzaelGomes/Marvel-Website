@@ -26,7 +26,6 @@ interface thumbnail {
 
 const Characters = () => {
   const [characters, setCharacters] = useState<[]>([]);
- 
 
   const ref = useRef<HTMLDivElement>(null);
 

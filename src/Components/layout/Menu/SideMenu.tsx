@@ -12,7 +12,7 @@ import lightGiphy from "../../../assets/light_ghipy.webp";
 const SideMenu = () => {
   const { user } = useAuth();
   const { email } = user;
-  const [menu, setMenu] = useState<boolean>(true);
+  const [menu, setMenu] = useState<boolean>(false);
   const [isLogOut, setIsLogOut] = useState<boolean>(false);
   const navigate = useNavigate();
   const { switchTheme, theme } = useContext(AuthContext);

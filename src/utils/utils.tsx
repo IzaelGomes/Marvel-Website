@@ -12,8 +12,5 @@ export function SaveLocalStorage(key:string, characterss:any){
     }, [characters])
 
     return [characters, setCharacters]
-
-
-
 }
 
