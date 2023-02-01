@@ -28,7 +28,7 @@ export const ContainerCard = styled.div`
     }
  
      img{
-        max-width:300px;
+        max-width:200px;
         height:300px;
         display: block;
         margin: 0px auto;
@@ -38,6 +38,7 @@ export const ContainerCard = styled.div`
     }
 
     .img-container{
+        max-width:200px;
         position:relative;
     }
 

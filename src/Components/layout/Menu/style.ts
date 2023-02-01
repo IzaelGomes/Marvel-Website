@@ -24,7 +24,6 @@ export const Aside = styled.aside`
             max-width:35px;
             cursor:pointer;
         }
-
     }
 
     #container{

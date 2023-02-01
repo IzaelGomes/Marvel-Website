@@ -26,7 +26,7 @@ const SideMenu = () => {
 
   return (
     <Aside>
-      <div>{isLogOut ? <p style={{ fontSize: 200 }}>CARREGANDO</p> : null}</div>
+      
 
       <div id="header-menu">
         {menu ? (
@@ -83,8 +83,8 @@ const SideMenu = () => {
         </div>
       </div>
 
-      {menu ? (
-        <div id="container">
+      
+        {menu ? <div id="container">
           <header>
             <span onClick={() => setMenu(!menu)}>
               <FiAlignJustify
@@ -102,7 +102,7 @@ const SideMenu = () => {
                 <Link to={"/characters"}>Personagens </Link>
               </li>
               <li>
-                <Link to={""}>Filmes</Link>
+                <Link to={"/comics"}>Comics</Link>
               </li>
               <li>
                 <Link to={""}>Produtores</Link>
@@ -114,8 +114,8 @@ const SideMenu = () => {
             <img src={logo_user} alt="user" />
             <span>Vingador(a) : {email}</span>
           </footer>
-        </div>
-      ) : null}
+        </div> : null}  
+
     </Aside>
   );
 };

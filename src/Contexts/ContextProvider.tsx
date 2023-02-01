@@ -4,7 +4,7 @@ import light from '../styles/themes/light';
 import dark from '../styles/themes/dark';
 import {Theme} from '../styles/style'
 
-interface User {
+type User = {
   email: string;
 }
 

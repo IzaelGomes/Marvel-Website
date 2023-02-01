@@ -10,7 +10,7 @@ import SideMenu from "../../Components/layout/Menu/SideMenu";
 import Card from "../../Components/layout/Card/Card";
 import { BsFillArrowUpCircleFill } from "react-icons/bs";
 
-interface CharactersTypes {
+export interface CharactersTypes {
   name: string;
   key: number;
   id: number;

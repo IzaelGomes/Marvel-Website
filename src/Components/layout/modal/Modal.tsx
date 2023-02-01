@@ -1,28 +1,21 @@
-import { MoonLoader } from "react-spinners";
 import { ModalSection, ModalContainer, IconClose } from "./style";
-import { AiOutlineClose } from "react-icons/ai";
 
 interface IModalProps {
-  children: React.ReactNode,
-  name?: string,
-  description?: string
+  children: React.ReactNode;
+  name?: string;
+  description?: string;
 }
 
-const Modal: React.FC<IModalProps> = ({
-  children,
-  name,
-  description
-}):JSX.Element => {
-
+const Modal = ({ children, name, description }: IModalProps) => {
   return (
     <ModalSection>
       <ModalContainer>
-        <IconClose>
-          {children}
-        </IconClose>
-        <span>{name}</span>
-        <br />
-        <span>{description}</span>
+        <IconClose>{children}</IconClose>
+        <div className="Modalcontent">
+          <h1>{name}</h1>
+          <br />
+          <p>{description ? description : "Não possui descrição"}</p>
+        </div>
       </ModalContainer>
     </ModalSection>
   );

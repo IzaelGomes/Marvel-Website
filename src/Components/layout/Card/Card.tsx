@@ -1,6 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Container, ContainerCard } from "./style";
-import { AiFillHeart, AiOutlineHeart, AiFillInfoCircle, AiOutlineClose } from 'react-icons/ai';
+import {
+  AiFillHeart,
+  AiOutlineHeart,
+  AiFillInfoCircle,
+  AiOutlineClose,
+} from "react-icons/ai";
 import * as Dialog from "@radix-ui/react-dialog";
 import Swal from "sweetalert2";
 import Modal from "../modal/Modal";
@@ -12,9 +17,8 @@ interface CardProps {
   path?: string;
   extension: string;
   id: number;
-  characterObject: any
+  characterObject: any;
 }
-
 
 const Card = ({
   description,
@@ -22,15 +26,12 @@ const Card = ({
   name,
   extension,
   id,
-  characterObject
+  characterObject,
 }: CardProps) => {
+  
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  const fav = {
-    saved : "saved",
-    notsaved:"notsaved"
-  }
 
   function save(saveCharacter: CardProps) {
     const charactersSaved: any = localStorage.getItem("marvel");
@@ -57,7 +58,7 @@ const Card = ({
       iconColor: "#842524",
     });
 
-    checkIfIsSaved()
+    checkIfIsSaved();
   }
 
   function checkIfIsSaved() {
@@ -67,8 +68,8 @@ const Card = ({
   }
 
   useEffect(() => {
-    checkIfIsSaved()
-  },[])
+    checkIfIsSaved();
+  }, []);
 
   return (
     <>
@@ -93,7 +94,7 @@ const Card = ({
                 <AiFillInfoCircle
                   style={{ height: 100, width: 60, cursor: "pointer" }}
                   onClick={() => {
-                    setIsModalOpen(true)
+                    setIsModalOpen(true);
                   }}
                 />
               </div>
