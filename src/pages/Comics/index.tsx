@@ -2,8 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import { time, apiKey, md5 } from '../../services/Api';
 import { CharactersTypes } from '../Characters';
-import Card from '../../Components/layout/Card/Card';
-import ComicCard from '../../Components/layout/Card/comicCard'; 
+import ComicCard from '../../Components/layout/Card/ComicCard'
 import {BsFillArrowUpCircleFill} from 'react-icons/bs'
 import { Container } from '../../pages/Comics/style';
 import SideMenu from '../../Components/layout/Menu/SideMenu';

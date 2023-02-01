@@ -16,4 +16,18 @@ export const GlobalStyle = createGlobalStyle`
     transition: background-color 1s;
   }
 
+  body::-webkit-scrollbar {
+    width: 9px;               /* width of the entire scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: ${props => props.theme.colors.background}
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #842524;    /* color of the scroll thumb */
+    border-radius: 10px;       /* roundness of the scroll thumb */
+    border: 3px solid #842524;  /* creates padding around scroll thumb */
+  }
+
 `

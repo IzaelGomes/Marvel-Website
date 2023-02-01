@@ -29,10 +29,25 @@ export const ModalContainer = styled.div`
   width: 400px;
   height: 400px;
   display: flex;
+  overflow:auto;
   flex-direction: column;
 
   p{
     font-size:18px;
+  }
+
+  ::-webkit-scrollbar  {
+    width: 9px;               /* width of the entire scrollbar */
+  }
+  
+  ::-webkit-scrollbar-track  {
+    background: ${props => props.theme.colors.background}
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #842524;    /* color of the scroll thumb */
+    border-radius: 10px;       /* roundness of the scroll thumb */
+    border: 3px solid #842524;  /* creates padding around scroll thumb */
   }
 `;
 
